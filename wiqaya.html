@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>وقاية — Wiqaya</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<!-- Google AdSense — replace ca-pub-XXXXXXXXXXXXXXXX بـ ID ديالك -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --surface2: #1a1a26;
+    --border: rgba(255,255,255,0.07);
+    --accent: #00e5ff;
+    --accent2: #7c3aed;
+    --accent3: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --text: #f0f0f5;
+    --text-muted: #6b6b80;
+    --glow: 0 0 40px rgba(0,229,255,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Cairo', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Animated background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 50% at 20% 10%, rgba(0,229,255,0.05) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(124,58,237,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 50% 50%, rgba(16,185,129,0.03) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Grid overlay */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* HEADER */
+  header {
+    padding: 28px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    box-shadow: 0 0 20px rgba(0,229,255,0.3);
+    animation: pulse-icon 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse-icon {
+    0%, 100% { box-shadow: 0 0 20px rgba(0,229,255,0.3); }
+    50% { box-shadow: 0 0 35px rgba(0,229,255,0.5); }
+  }
+
+  .logo-text {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+  }
+
+  .logo-text span {
+    color: var(--accent);
+  }
+
+  .logo-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .lang-selector {
+    display: flex;
+    gap: 6px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 4px;
+  }
+
+  .lang-btn {
+    padding: 5px 12px;
+    border-radius: 7px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 12px;
+    font-family: 'Cairo', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .lang-btn.active {
+    background: var(--accent);
+    color: #000;
+    font-weight: 700;
+  }
+
+  /* HERO */
+  .hero {
+    text-align: center;
+    padding: 60px 0 48px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,229,255,0.08);
+    border: 1px solid rgba(0,229,255,0.2);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 12px;
+    color: var(--accent);
+    font-family: 'Space Mono', monospace;
+    margin-bottom: 28px;
+    animation: fadeInDown 0.6s ease;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: blink 1.5s infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 6vw, 58px);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    animation: fadeInUp 0.7s ease;
+  }
+
+  .hero h1 .highlight {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero p {
+    color: var(--text-muted);
+    font-size: 17px;
+    margin-top: 16px;
+    font-weight: 300;
+    animation: fadeInUp 0.8s ease;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* TOOL SELECTOR */
+  .tool-selector {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+    animation: fadeInUp 0.9s ease;
+  }
+
+  .tool-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 16px;
+    cursor: pointer;
+    transition: all 0.25s;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tool-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .tool-card:nth-child(1)::before { background: radial-gradient(circle at 50% 0%, rgba(0,229,255,0.1), transparent 70%); }
+  .tool-card:nth-child(2)::before { background: radial-gradient(circle at 50% 0%, rgba(124,58,237,0.1), transparent 70%); }
+  .tool-card:nth-child(3)::before { background: radial-gradient(circle at 50% 0%, rgba(16,185,129,0.1), transparent 70%); }
+
+  .tool-card:hover::before, .tool-card.active::before { opacity: 1; }
+
+  .tool-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255,255,255,0.15);
+  }
+
+  .tool-card.active:nth-child(1) { border-color: var(--accent); box-shadow: 0 0 25px rgba(0,229,255,0.15); }
+  .tool-card.active:nth-child(2) { border-color: var(--accent2); box-shadow: 0 0 25px rgba(124,58,237,0.15); }
+  .tool-card.active:nth-child(3) { border-color: var(--accent3); box-shadow: 0 0 25px rgba(16,185,129,0.15); }
+
+  .tool-emoji {
+    font-size: 28px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .tool-name {
+    font-size: 14px;
+    font-weight: 700;
+    display: block;
+  }
+
+  .tool-desc {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 4px;
+    display: block;
+  }
+
+  /* INPUT AREA */
+  .input-area {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 20px;
+    animation: fadeInUp 1s ease;
+    transition: border-color 0.3s;
+  }
+
+  .input-area:focus-within {
+    border-color: rgba(0,229,255,0.3);
+    box-shadow: var(--glow);
+  }
+
+  .input-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .input-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+  }
+
+  textarea {
+    flex: 1;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    color: var(--text);
+    font-family: 'Cairo', sans-serif;
+    font-size: 15px;
+    resize: none;
+    min-height: 100px;
+    outline: none;
+    transition: border-color 0.2s;
+    direction: auto;
+  }
+
+  textarea::placeholder { color: var(--text-muted); }
+  textarea:focus { border-color: rgba(0,229,255,0.3); }
+
+  .upload-btn {
+    background: var(--surface2);
+    border: 1px dashed rgba(255,255,255,0.15);
+    border-radius: 12px;
+    padding: 14px;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 20px;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    min-height: 100px;
+    justify-content: center;
+  }
+
+  .upload-btn span {
+    font-size: 10px;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .upload-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(0,229,255,0.05);
+  }
+
+  .analyze-btn {
+    width: 100%;
+    margin-top: 14px;
+    padding: 16px;
+    border-radius: 14px;
+    border: none;
+    background: linear-gradient(135deg, var(--accent), #0090a8);
+    color: #000;
+    font-family: 'Cairo', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .analyze-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent, rgba(255,255,255,0.15), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.4s;
+  }
+
+  .analyze-btn:hover::before { transform: translateX(100%); }
+  .analyze-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,229,255,0.3); }
+  .analyze-btn:active { transform: translateY(0); }
+  .analyze-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  /* RESULT */
+  .result-container {
+    margin-top: 24px;
+    animation: fadeInUp 0.5s ease;
+    display: none;
+  }
+
+  .result-container.show { display: block; }
+
+  .result-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .result-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .result-badge.safe {
+    background: rgba(16,185,129,0.15);
+    border: 1px solid rgba(16,185,129,0.4);
+    color: var(--accent3);
+  }
+
+  .result-badge.danger {
+    background: rgba(239,68,68,0.15);
+    border: 1px solid rgba(239,68,68,0.4);
+    color: var(--danger);
+  }
+
+  .result-badge.warning {
+    background: rgba(245,158,11,0.15);
+    border: 1px solid rgba(245,158,11,0.4);
+    color: var(--warning);
+  }
+
+  .result-badge.neutral {
+    background: rgba(107,107,128,0.15);
+    border: 1px solid rgba(107,107,128,0.4);
+    color: var(--text-muted);
+  }
+
+  .result-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+  }
+
+  .result-text {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text);
+  }
+
+  .result-text strong {
+    color: var(--accent);
+  }
+
+  /* Score bar */
+  .score-section {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+
+  .score-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .score-bar {
+    height: 6px;
+    background: var(--surface2);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+
+  .score-fill {
+    height: 100%;
+    border-radius: 100px;
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 0%;
+  }
+
+  .score-fill.safe { background: linear-gradient(90deg, var(--accent3), #34d399); }
+  .score-fill.danger { background: linear-gradient(90deg, var(--danger), #f87171); }
+  .score-fill.warning { background: linear-gradient(90deg, var(--warning), #fbbf24); }
+
+  /* Loading */
+  .loading {
+    text-align: center;
+    padding: 40px;
+    display: none;
+  }
+
+  .loading.show { display: block; }
+
+  .loading-ring {
+    width: 50px;
+    height: 50px;
+    border: 3px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 16px;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .loading-text {
+    color: var(--text-muted);
+    font-size: 14px;
+    font-family: 'Space Mono', monospace;
+    animation: pulse-text 1.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse-text {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+
+  /* STATS */
+  .stats-bar {
+    display: flex;
+    gap: 1px;
+    background: var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 32px 0;
+    border: 1px solid var(--border);
+  }
+
+  .stat-item {
+    flex: 1;
+    background: var(--surface);
+    padding: 16px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--accent);
+    font-family: 'Space Mono', monospace;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 4px;
+    display: block;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 32px 0;
+    color: var(--text-muted);
+    font-size: 12px;
+    border-top: 1px solid var(--border);
+    margin-top: 48px;
+    font-family: 'Space Mono', monospace;
+  }
+
+  footer span { color: var(--accent); }
+
+  /* Hidden file input */
+  #fileInput { display: none; }
+
+  /* Error */
+  .error-msg {
+    background: rgba(239,68,68,0.1);
+    border: 1px solid rgba(239,68,68,0.3);
+    border-radius: 12px;
+    padding: 14px 18px;
+    color: var(--danger);
+    font-size: 14px;
+    margin-top: 14px;
+    display: none;
+  }
+
+  .error-msg.show { display: block; }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .tool-selector { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 32px; }
+    .input-row { flex-direction: column; }
+    header { flex-direction: column; gap: 16px; }
+    .stats-bar { flex-direction: column; gap: 0; }
+  }
+
+  /* ===== ADS ===== */
+  .ad-slot {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 14px;
+    opacity: 0.85;
+    transition: opacity 0.2s;
+  }
+  .ad-slot:hover { opacity: 1; }
+
+  /* إعلان بين الأدوات والـ input */
+  .ad-middle {
+    margin: 0 0 24px;
+    min-height: 90px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ad-middle::before {
+    content: 'إعلان';
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    font-size: 9px;
+    color: var(--text-muted);
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* إعلان بعد النتيجة */
+  .ad-result {
+    margin: 20px 0 0;
+    min-height: 90px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ad-result::before {
+    content: 'إعلان';
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    font-size: 9px;
+    color: var(--text-muted);
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* إعلان Footer */
+  .ad-footer {
+    margin: 24px auto 0;
+    max-width: 728px;
+    min-height: 60px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ad-footer::before {
+    content: 'إعلان';
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    font-size: 9px;
+    color: var(--text-muted);
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <div class="logo-icon">🛡️</div>
+      <div>
+        <div class="logo-text">وقاية <span>Wiqaya</span></div>
+        <div class="logo-sub">AI Digital Shield</div>
+      </div>
+    </div>
+    <div class="lang-selector">
+      <button class="lang-btn active" onclick="setLang('ar')">عربي</button>
+      <button class="lang-btn" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge" id="heroBadge">🤖 مدعوم بالذكاء الاصطناعي</div>
+    <h1 id="heroTitle">حاميك في <span class="highlight">العالم الرقمي</span></h1>
+    <p id="heroSub">فحص الأخبار، كشف محتوى AI، وتحليل المقالات — كلشي في مكان وحد</p>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-num">3</span>
+      <span class="stat-label" id="stat1">أدوات ذكية</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">∞</span>
+      <span class="stat-label" id="stat2">لغات مدعومة</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">100%</span>
+      <span class="stat-label" id="stat3">مجاني</span>
+    </div>
+  </div>
+
+  <!-- TOOL SELECTOR -->
+  <div class="tool-selector" id="toolSelector">
+    <div class="tool-card active" onclick="selectTool(0)" id="tool0">
+      <span class="tool-emoji">📰</span>
+      <span class="tool-name" id="toolName0">تحقق من الخبر</span>
+      <span class="tool-desc" id="toolDesc0">حقيقي ولا مزور؟</span>
+    </div>
+    <div class="tool-card" onclick="selectTool(1)" id="tool1">
+      <span class="tool-emoji">🖼️</span>
+      <span class="tool-name" id="toolName1">كشف AI</span>
+      <span class="tool-desc" id="toolDesc1">صورة أو فيديو مزور؟</span>
+    </div>
+    <div class="tool-card" onclick="selectTool(2)" id="tool2">
+      <span class="tool-emoji">✍️</span>
+      <span class="tool-name" id="toolName2">كشف الغش</span>
+      <span class="tool-desc" id="toolDesc2">إنسان ولا AI كتبه؟</span>
+    </div>
+  </div>
+
+  <!-- AD SLOT 1 — بين الأدوات والـ input (leaderboard 728x90) -->
+  <div class="ad-slot ad-middle">
+    <ins class="adsbygoogle"
+         style="display:block;width:100%;max-height:90px;"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="1111111111"
+         data-ad-format="horizontal"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <!-- INPUT AREA -->
+  <div class="input-area">
+    <span class="input-label" id="inputLabel">// أدخل المحتوى للتحليل</span>
+    <div class="input-row">
+      <textarea id="userInput" placeholder="الصق الخبر، المقال، أو النص هنا..." rows="4"></textarea>
+      <div class="upload-btn" onclick="document.getElementById('fileInput').click()" id="uploadArea">
+        <span>📎</span>
+        <span>رفع</span>
+        <span>ملف</span>
+      </div>
+    </div>
+    <input type="file" id="fileInput" accept="image/*,.txt,.pdf" onchange="handleFile(this)">
+    <div class="error-msg" id="errorMsg">⚠️ يرجى إدخال محتوى للتحليل</div>
+    <button class="analyze-btn" onclick="analyze()" id="analyzeBtn">
+      🔍 <span id="analyzeBtnText">تحليل الآن</span>
+    </button>
+  </div>
+
+  <!-- LOADING -->
+  <div class="loading" id="loading">
+    <div class="loading-ring"></div>
+    <div class="loading-text" id="loadingText">جاري التحليل...</div>
+  </div>
+
+  <!-- RESULT -->
+  <div class="result-container" id="resultContainer">
+    <div class="result-header">
+      <div class="result-badge" id="resultBadge">—</div>
+    </div>
+    <div class="result-card">
+      <div class="result-text" id="resultText"></div>
+      <div class="score-section" id="scoreSection">
+        <div class="score-label">
+          <span id="scoreLabel">درجة الموثوقية</span>
+          <span id="scoreNum">0%</span>
+        </div>
+        <div class="score-bar">
+          <div class="score-fill" id="scoreFill"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AD SLOT 2 — بعد النتيجة مباشرة (in-article) -->
+    <div class="ad-slot ad-result">
+      <ins class="adsbygoogle"
+           style="display:block;width:100%;max-height:90px;"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+           data-ad-slot="2222222222"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <!-- AD SLOT 3 — فوق الـ footer (banner صغير) -->
+  <div class="ad-slot ad-footer">
+    <ins class="adsbygoogle"
+         style="display:block;width:100%;max-height:60px;"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="3333333333"
+         data-ad-format="horizontal"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  <div class="container" style="margin-top:16px;">
+    وقاية <span>Wiqaya</span> — حاميك الرقمي · beta v0.1
+  </div>
+</footer>
+
+<script>
+// =====================
+// CONFIG
+// =====================
+const API_URL = "https://api.anthropic.com/v1/messages";
+let currentTool = 0;
+let currentLang = 'ar';
+let uploadedContent = null;
+
+// =====================
+// TRANSLATIONS
+// =====================
+const T = {
+  ar: {
+    badge: '🤖 مدعوم بالذكاء الاصطناعي',
+    heroTitle: 'حاميك في <span class="highlight">العالم الرقمي</span>',
+    heroSub: 'فحص الأخبار، كشف محتوى AI، وتحليل المقالات — كلشي في مكان وحد',
+    stat1: 'أدوات ذكية', stat2: 'لغات مدعومة', stat3: 'مجاني',
+    tools: [
+      { name: 'تحقق من الخبر', desc: 'حقيقي ولا مزور؟' },
+      { name: 'كشف AI', desc: 'صورة أو فيديو مزور؟' },
+      { name: 'كشف الغش', desc: 'إنسان ولا AI كتبه؟' }
+    ],
+    placeholders: [
+      'الصق الخبر أو المقال هنا...',
+      'الصق وصف الصورة أو رابط الفيديو هنا...',
+      'الصق النص أو المقال لفحصه...'
+    ],
+    inputLabel: '// أدخل المحتوى للتحليل',
+    analyzeBtn: 'تحليل الآن',
+    loading: 'جاري التحليل...',
+    error: '⚠️ يرجى إدخال محتوى للتحليل',
+    scoreLabel: 'درجة الموثوقية'
+  },
+  fr: {
+    badge: '🤖 Propulsé par l\'IA',
+    heroTitle: 'Votre bouclier dans le <span class="highlight">monde numérique</span>',
+    heroSub: 'Vérifier les actualités, détecter l\'IA, analyser les articles — tout en un seul endroit',
+    stat1: 'Outils intelligents', stat2: 'Langues supportées', stat3: 'Gratuit',
+    tools: [
+      { name: 'Vérifier l\'info', desc: 'Vraie ou fausse?' },
+      { name: 'Détecter l\'IA', desc: 'Image/vidéo générée?' },
+      { name: 'Détecter la triche', desc: 'Humain ou IA?' }
+    ],
+    placeholders: [
+      'Coller l\'article ou la nouvelle ici...',
+      'Coller la description ou le lien de la vidéo...',
+      'Coller le texte à analyser...'
+    ],
+    inputLabel: '// Entrez le contenu à analyser',
+    analyzeBtn: 'Analyser maintenant',
+    loading: 'Analyse en cours...',
+    error: '⚠️ Veuillez entrer du contenu à analyser',
+    scoreLabel: 'Score de fiabilité'
+  },
+  en: {
+    badge: '🤖 Powered by AI',
+    heroTitle: 'Your shield in the <span class="highlight">digital world</span>',
+    heroSub: 'Fact-check news, detect AI content, analyze articles — all in one place',
+    stat1: 'Smart tools', stat2: 'Languages supported', stat3: 'Free',
+    tools: [
+      { name: 'Fact Check', desc: 'Real or fake news?' },
+      { name: 'Detect AI', desc: 'AI image or video?' },
+      { name: 'Detect Plagiarism', desc: 'Human or AI written?' }
+    ],
+    placeholders: [
+      'Paste the article or news here...',
+      'Paste image description or video link here...',
+      'Paste the text to analyze here...'
+    ],
+    inputLabel: '// Enter content to analyze',
+    analyzeBtn: 'Analyze now',
+    loading: 'Analyzing...',
+    error: '⚠️ Please enter content to analyze',
+    scoreLabel: 'Reliability score'
+  }
+};
+
+// =====================
+// PROMPTS
+// =====================
+function getPrompt(tool, content, lang) {
+  const langInstruction = {
+    ar: 'أجب بالعربية أو الدارجة المغربية بأسلوب بسيط وواضح.',
+    fr: 'Réponds en français de manière simple et claire.',
+    en: 'Respond in English in a simple and clear manner.'
+  }[lang];
+
+  const prompts = [
+    // Fact check
+    `أنت محلل متخصص في التحقق من صحة الأخبار والمعلومات.
+${langInstruction}
+
+قم بتحليل المحتوى التالي وأجب على هذه النقاط:
+1. هل هذا المحتوى صحيح أم مشكوك فيه أم مزور؟
+2. ما هي الأدلة أو المؤشرات التي تدل على ذلك؟
+3. ما هي المخاطر إذا صدق الناس هذا المحتوى؟
+4. ماذا ينصح المستخدم أن يفعل؟
+
+في النهاية، أعط درجة الموثوقية من 0 إلى 100 بهذا الشكل الدقيق:
+SCORE:XX
+
+المحتوى:
+${content}`,
+
+    // AI Detection
+    `أنت خبير في كشف المحتوى المولّد بالذكاء الاصطناعي (Deepfake, AI-generated content).
+${langInstruction}
+
+قم بتحليل المحتوى التالي وأجب:
+1. هل يبدو هذا المحتوى حقيقياً أم مصنوعاً بالذكاء الاصطناعي؟
+2. ما هي العلامات أو المؤشرات التي لاحظتها؟
+3. ما هو الغرض المحتمل من هذا المحتوى؟
+4. كيف يحمي المستخدم نفسه؟
+
+في النهاية، أعط درجة احتمالية أن يكون المحتوى من صنع AI من 0 إلى 100:
+SCORE:XX (كلما ارتفع الرقم، كلما كان احتمال AI أكبر)
+
+المحتوى:
+${content}`,
+
+    // AI Writing Detection
+    `أنت خبير في تحليل أسلوب الكتابة وكشف النصوص المكتوبة بالذكاء الاصطناعي.
+${langInstruction}
+
+قم بتحليل النص التالي وأجب:
+1. هل كتبه إنسان أم ذكاء اصطناعي (ChatGPT, Claude, etc.)?
+2. ما هي المؤشرات اللغوية والأسلوبية التي تدل على ذلك؟
+3. ما نسبة احتمال أنه مكتوب بالذكاء الاصطناعي؟
+4. ما الاستخدامات المشروعة وغير المشروعة لهذا المحتوى؟
+
+في النهاية، أعط درجة احتمالية أن يكون النص مكتوباً بالذكاء الاصطناعي من 0 إلى 100:
+SCORE:XX
+
+النص:
+${content}`
+  ];
+
+  return prompts[tool];
+}
+
+// =====================
+// FUNCTIONS
+// =====================
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  
+  const t = T[lang];
+  document.getElementById('heroBadge').textContent = t.badge;
+  document.getElementById('heroTitle').innerHTML = t.heroTitle;
+  document.getElementById('heroSub').textContent = t.heroSub;
+  document.getElementById('stat1').textContent = t.stat1;
+  document.getElementById('stat2').textContent = t.stat2;
+  document.getElementById('stat3').textContent = t.stat3;
+  document.getElementById('inputLabel').textContent = t.inputLabel;
+  document.getElementById('analyzeBtnText').textContent = t.analyzeBtn;
+  document.getElementById('loadingText').textContent = t.loading;
+  document.getElementById('errorMsg').textContent = t.error;
+  document.getElementById('scoreLabel').textContent = t.scoreLabel;
+  
+  t.tools.forEach((tool, i) => {
+    document.getElementById(`toolName${i}`).textContent = tool.name;
+    document.getElementById(`toolDesc${i}`).textContent = tool.desc;
+  });
+  
+  document.getElementById('userInput').placeholder = t.placeholders[currentTool];
+  document.getElementById('html').setAttribute('lang', lang === 'en' ? 'en' : 'ar');
+}
+
+function selectTool(index) {
+  currentTool = index;
+  document.querySelectorAll('.tool-card').forEach((c, i) => {
+    c.classList.toggle('active', i === index);
+  });
+  document.getElementById('userInput').placeholder = T[currentLang].placeholders[index];
+  document.getElementById('resultContainer').classList.remove('show');
+  document.getElementById('errorMsg').classList.remove('show');
+}
+
+function handleFile(input) {
+  const file = input.files[0];
+  if (!file) return;
+  
+  if (file.type.startsWith('image/')) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      uploadedContent = `[صورة مرفوعة: ${file.name}]`;
+      document.getElementById('userInput').placeholder = `✅ تم رفع: ${file.name}`;
+      document.getElementById('uploadArea').style.borderColor = 'var(--accent3)';
+      document.getElementById('uploadArea').style.color = 'var(--accent3)';
+    };
+    reader.readAsDataURL(file);
+  } else {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      uploadedContent = e.target.result;
+      document.getElementById('userInput').value = uploadedContent.substring(0, 500) + '...';
+    };
+    reader.readAsText(file);
+  }
+}
+
+function parseResult(text) {
+  const scoreMatch = text.match(/SCORE:(\d+)/);
+  const score = scoreMatch ? parseInt(scoreMatch[1]) : null;
+  const cleanText = text.replace(/SCORE:\d+/g, '').trim();
+  return { text: cleanText, score };
+}
+
+function getVerdict(tool, score, lang) {
+  if (score === null) return { label: '—', class: 'neutral', emoji: '🔍' };
+  
+  const verdicts = {
+    ar: {
+      0: [
+        { safe: '✅ موثوق', warning: '⚠️ مشكوك فيه', danger: '🚨 مزور' },
+        { safe: '✅ حقيقي', warning: '⚠️ مشبوه', danger: '🤖 مصنوع بـ AI' },
+        { safe: '✅ كتبه إنسان', warning: '⚠️ مختلط', danger: '🤖 كتبه AI' }
+      ]
+    },
+    fr: {
+      0: [
+        { safe: '✅ Fiable', warning: '⚠️ Douteux', danger: '🚨 Faux' },
+        { safe: '✅ Authentique', warning: '⚠️ Suspect', danger: '🤖 Généré par IA' },
+        { safe: '✅ Écrit par humain', warning: '⚠️ Mixte', danger: '🤖 Écrit par IA' }
+      ]
+    },
+    en: {
+      0: [
+        { safe: '✅ Reliable', warning: '⚠️ Questionable', danger: '🚨 Fake' },
+        { safe: '✅ Authentic', warning: '⚠️ Suspicious', danger: '🤖 AI Generated' },
+        { safe: '✅ Human Written', warning: '⚠️ Mixed', danger: '🤖 AI Written' }
+      ]
+    }
+  };
+  
+  const v = (verdicts[lang] || verdicts.ar)[0][tool];
+  
+  if (tool === 0) {
+    if (score >= 70) return { label: v.safe, class: 'safe', score };
+    if (score >= 40) return { label: v.warning, class: 'warning', score };
+    return { label: v.danger, class: 'danger', score };
+  } else {
+    if (score <= 30) return { label: v.safe, class: 'safe', score: 100 - score };
+    if (score <= 60) return { label: v.warning, class: 'warning', score: 100 - score };
+    return { label: v.danger, class: 'danger', score };
+  }
+}
+
+async function analyze() {
+  const input = document.getElementById('userInput').value.trim();
+  const content = uploadedContent || input;
+  
+  if (!content) {
+    document.getElementById('errorMsg').classList.add('show');
+    return;
+  }
+  
+  document.getElementById('errorMsg').classList.remove('show');
+  document.getElementById('resultContainer').classList.remove('show');
+  document.getElementById('loading').classList.add('show');
+  document.getElementById('analyzeBtn').disabled = true;
+
+  try {
+    const response = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        messages: [{
+          role: 'user',
+          content: getPrompt(currentTool, content, currentLang)
+        }]
+      })
+    });
+
+    const data = await response.json();
+    const rawText = data.content?.map(b => b.text || '').join('') || '';
+    const { text, score } = parseResult(rawText);
+    const verdict = getVerdict(currentTool, score, currentLang);
+
+    // Update badge
+    const badge = document.getElementById('resultBadge');
+    badge.textContent = verdict.label;
+    badge.className = `result-badge ${verdict.class}`;
+
+    // Update text
+    document.getElementById('resultText').innerHTML = text.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+    // Update score bar
+    if (score !== null) {
+      const fill = document.getElementById('scoreFill');
+      const fillScore = verdict.class === 'danger' ? score : (100 - score < 30 ? score : verdict.score);
+      document.getElementById('scoreNum').textContent = `${verdict.score || score}%`;
+      fill.className = `score-fill ${verdict.class}`;
+      document.getElementById('scoreSection').style.display = 'block';
+      setTimeout(() => { fill.style.width = `${verdict.score || score}%`; }, 100);
+    } else {
+      document.getElementById('scoreSection').style.display = 'none';
+    }
+
+    document.getElementById('loading').classList.remove('show');
+    document.getElementById('resultContainer').classList.add('show');
+
+  } catch (err) {
+    document.getElementById('loading').classList.remove('show');
+    document.getElementById('errorMsg').textContent = '❌ حدث خطأ في التحليل. حاول مرة أخرى.';
+    document.getElementById('errorMsg').classList.add('show');
+  }
+
+  document.getElementById('analyzeBtn').disabled = false;
+  uploadedContent = null;
+}
+
+// Enter key support
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('userInput').addEventListener('keydown', (e) => {
+    if (e.ctrlKey && e.key === 'Enter') analyze();
+  });
+});
+</script>
+</body>
+</html>
